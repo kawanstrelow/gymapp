@@ -43,7 +43,7 @@ export function AppRoutes() {
         }}
             
         >
-            {/* <Screen 
+            <Screen 
                 name="home"
                 component={Home}
                 options={{
@@ -52,7 +52,7 @@ export function AppRoutes() {
                     )
                 }}
                 
-            /> */}
+            />
             <Screen 
                 name="history"
                 component={History}
