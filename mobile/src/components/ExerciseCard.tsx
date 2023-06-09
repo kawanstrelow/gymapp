@@ -2,26 +2,30 @@ import { HStack, Heading, Image, Text, VStack, Icon } from "native-base";
 import { TouchableHighlightProps, TouchableOpacity } from "react-native";
 import { Entypo } from '@expo/vector-icons';
 
-type Props = TouchableHighlightProps & {
+import { api } from "@services/api";
 
+import { ExerciseDTO } from "@dtos/ExerciseDTO";
+
+type Props = TouchableHighlightProps & {
+    data: ExerciseDTO
 }
 
-export function ExerciseCard({...rest} : Props) {
+export function ExerciseCard({data, ...rest} : Props) {
     return (
         <TouchableOpacity {...rest}>
             <HStack bg='gray.500' alignItems='center' p={2} pr={4} rounded='md' mb={3}>
                 <Image 
-                    source={{uri: 'https://i.ytimg.com/vi/NFAEgfUIMFY/maxresdefault.jpg'}}
+                    source={{uri: `${api.defaults.baseURL}/exercise/thumb/${data.thumb}`}}
                     alt='Imagem do exercício'
                     w={16}
                     h={16}
-                    rounded={'md'}
+                    rounded='md'
                     mr={4}
                     resizeMode='cover'
                 />
                 <VStack flex={1}>
-                    <Heading fontSize='lg' color='white' fontFamily="heading">Remana Unilateral</Heading>
-                    <Text fontSize='sm' color='gray.200' mt={1} numberOfLines={2}>3 séries x 12 repetições</Text>
+                    <Heading fontSize='lg' color='white' fontFamily="heading">{data.name}</Heading>
+                    <Text fontSize='sm' color='gray.200' mt={1} numberOfLines={2}>{data.series} séries x {data.repetitions} repetições</Text>
                 </VStack>
                 
                 <Icon 
