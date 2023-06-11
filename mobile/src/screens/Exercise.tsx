@@ -63,6 +63,8 @@ export function Exercise() {
                 placement: 'top',
                 bgColor: 'green.700',
             })
+
+            navigation.navigate('history')
         } catch (error) {
             const isAppError = error instanceof AppError
             const title = isAppError ? error.message : 'Não foi possível registrar o exercício.'
